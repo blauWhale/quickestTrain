@@ -12,5 +12,26 @@
       "x": "1",
       "y": "3"
     }
+  },
+  {
+    "destination": {
+      "name": "Genf",
+      "x": "2",
+      "y": "4"
+    }
+  },
+  {
+    "destination": {
+      "name": "Luzern",
+      "x": "10",
+      "y": "3"
+    }
+  },
+  {
+    "destination": {
+      "name": "St.Gallen",
+      "x": "9",
+      "y": "2"
+    }
   }
 ]

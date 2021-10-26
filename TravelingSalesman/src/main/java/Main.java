@@ -9,9 +9,12 @@ import java.util.*;
 public class Main {
     static TreeMap<String, int[]> cityMap = new TreeMap<>();
     public static void main(String[] args) throws IOException {
-        System.out.println("Grüezi, bitte alle einsteigen. Es geht nach: ");
+        System.out.println("Grüezi, bitte alle einsteigen. Es geht nach: \n");
         //JSON parser object to parse read file
         readJsonFile();
+        for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + Arrays.toString(entry.getValue()));
+        }
 
     }
 
@@ -44,7 +47,6 @@ public class Main {
 
         String yCord = (String) destinationObject.get("y");
         cityMap.put(name, new int[] {Integer.parseInt(xCord), Integer.parseInt(yCord)});
-        System.out.println( name +" in: ("+ yCord + "/" + xCord+ ")");
     }
 
 
