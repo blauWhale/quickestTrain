@@ -1,0 +1,16 @@
+[
+  {
+    "destination": {
+      "name": "Zürich",
+      "x": "1",
+      "y": "2"
+    }
+  },
+  {
+    "destination": {
+      "name": "Bern",
+      "x": "1",
+      "y": "3"
+    }
+  }
+]
