@@ -7,11 +7,11 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static TreeMap<String, int[]> cityMap = new TreeMap<>();
     public static void main(String[] args) throws IOException {
         System.out.println("Grüezi, bitte alle einsteigen. Es geht nach: ");
         //JSON parser object to parse read file
         readJsonFile();
-
 
     }
 
@@ -23,7 +23,6 @@ public class Main {
 
             JSONArray destinationArray = (JSONArray) obj;
 
-            //Iterate over employee array
             destinationArray.forEach(destination -> parseDestinationObject((JSONObject) destination));
 
         } catch (FileNotFoundException e) {
@@ -44,6 +43,7 @@ public class Main {
         String xCord = (String) destinationObject.get("x");
 
         String yCord = (String) destinationObject.get("y");
+        cityMap.put(name, new int[] {Integer.parseInt(xCord), Integer.parseInt(yCord)});
         System.out.println( name +" in: ("+ yCord + "/" + xCord+ ")");
     }
 
