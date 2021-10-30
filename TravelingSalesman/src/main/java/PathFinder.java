@@ -1,29 +1,18 @@
-
-
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.TreeMap;
 
-public class pathFinder {
+public class PathFinder {
 
-    static int[] one = {0, 0};
-    static int[] two = {1, 1};
-    static int[] three = {3,3};
-    static int[] four = {8,8};
-    static int[] five = {56,23};
-    static ArrayList<int[]> coordinatePoint = new ArrayList<>();
-    static ArrayList<int[]> shortestWay = new ArrayList<>();
+    public ArrayList<int[]> findShortestPath(TreeMap<String, int[]> cityMap) {
+        ArrayList<int[]> coordinatePoint = new ArrayList<>();
 
+        for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
+            coordinatePoint.add(entry.getValue());
+        }
 
-    public static void main(String[] args) {
-        coordinatePoint.add(one);
-        coordinatePoint.add(three);
-        coordinatePoint.add(four);
-        coordinatePoint.add(five);
-        coordinatePoint.add(two);
-        shortestWay.add(coordinatePoint.get(0));
-        findShortestPath();
-    }
-
-    private static void findShortestPath() {
+        ArrayList<int[]> shortestWay = new ArrayList<>();
         ArrayList<Integer> previousIndexes = new ArrayList<>();
         int currentIndex = 0;
         for (int i = 0; i < coordinatePoint.size(); i++) {
@@ -36,10 +25,21 @@ public class pathFinder {
                     indexOfCurrentClosestDestination = j;
                 }
             }
-            previousIndexes.add(currentIndex);
+            previousIndexes.add(indexOfCurrentClosestDestination);
             currentIndex = indexOfCurrentClosestDestination;
             shortestWay.add(coordinatePoint.get(indexOfCurrentClosestDestination));
         }
+
+
+        for(int[] point : shortestWay){
+            for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
+                if(Arrays.equals(entry.getValue(),point)){
+                    System.out.println(entry.getKey() + Arrays.toString(entry.getValue()));
+                }
+            }
+        }
+
+        return shortestWay;
     }
 
     private static boolean isInPreviousIndexes( ArrayList<Integer> previousIndexes, int key){

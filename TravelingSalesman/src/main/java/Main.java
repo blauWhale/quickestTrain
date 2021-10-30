@@ -8,13 +8,16 @@ import java.util.*;
 
 public class Main {
     static TreeMap<String, int[]> cityMap = new TreeMap<>();
+
     public static void main(String[] args) throws IOException {
-        System.out.println("Grüezi, bitte alle einsteigen. Es geht nach: \n");
-        //JSON parser object to parse read file
+//        System.out.println("Grüezi, bitte alle einsteigen. Es geht nach: \n");
+//        //JSON parser object to parse read file
         readJsonFile();
-        for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
-            System.out.println(entry.getKey() + ": " + Arrays.toString(entry.getValue()));
-        }
+//        for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
+//            System.out.println(entry.getKey() + ": " + Arrays.toString(entry.getValue()));
+//        }
+        PathFinder pathFinder = new PathFinder();
+        ArrayList<int[]> shortestWay = pathFinder.findShortestPath(cityMap);
 
     }
 
@@ -46,7 +49,7 @@ public class Main {
         String xCord = (String) destinationObject.get("x");
 
         String yCord = (String) destinationObject.get("y");
-        cityMap.put(name, new int[] {Integer.parseInt(xCord), Integer.parseInt(yCord)});
+        cityMap.put(name, new int[]{Integer.parseInt(xCord), Integer.parseInt(yCord)});
     }
 
 
