@@ -1,9 +1,9 @@
-package main.java;
+
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import java.io.*;
 import java.util.*;
 
@@ -11,12 +11,7 @@ public class Main {
     static TreeMap<String, int[]> cityMap = new TreeMap<>();
 
     public static void main(String[] args) throws IOException {
-//        System.out.println("Grüezi, bitte alle einsteigen. Es geht nach: \n");
-//        //JSON parser object to parse read file
         readJsonFile();
-//        for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
-//            System.out.println(entry.getKey() + ": " + Arrays.toString(entry.getValue()));
-//        }
         PathFinder pathFinder = new PathFinder();
         ArrayList<int[]> shortestWay = pathFinder.findShortestPath(cityMap);
 

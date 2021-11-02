@@ -1,5 +1,3 @@
-package main.java;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -13,10 +11,11 @@ public class PathFinder {
         for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
             coordinatePoint.add(entry.getValue());
         }
-
         ArrayList<int[]> shortestWay = new ArrayList<>();
         ArrayList<Integer> previousIndexes = new ArrayList<>();
         int currentIndex = 0;
+        previousIndexes.add(currentIndex);
+        shortestWay.add(coordinatePoint.get(currentIndex));
         for (int i = 0; i < coordinatePoint.size(); i++) {
             double currentDiff = Integer.MAX_VALUE;
             int indexOfCurrentClosestDestination = 0;
@@ -31,8 +30,6 @@ public class PathFinder {
             currentIndex = indexOfCurrentClosestDestination;
             shortestWay.add(coordinatePoint.get(indexOfCurrentClosestDestination));
         }
-
-        shortestWay.add(shortestWay.get(0));
         for(int[] point : shortestWay){
             for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
                 if(Arrays.equals(entry.getValue(),point)){
@@ -40,7 +37,6 @@ public class PathFinder {
                 }
             }
         }
-
         return shortestWay;
     }
 
