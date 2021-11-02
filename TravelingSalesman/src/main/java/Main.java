@@ -1,5 +1,4 @@
 package main.java;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -19,7 +18,7 @@ public class Main {
 //            System.out.println(entry.getKey() + ": " + Arrays.toString(entry.getValue()));
 //        }
         PathFinder pathFinder = new PathFinder();
-        pathFinder.compareAllPath(cityMap);
+        ArrayList<int[]> shortestWay = pathFinder.findShortestPath(cityMap);
 
     }
 
