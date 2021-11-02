@@ -1,3 +1,5 @@
+package main.java;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -5,53 +7,41 @@ import java.util.TreeMap;
 
 public class PathFinder {
 
-    public ArrayList<int[]> findShortestPath(TreeMap<String, int[]> cityMap) {
-        ArrayList<int[]> coordinatePoint = new ArrayList<>();
-
-        for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
-            coordinatePoint.add(entry.getValue());
-        }
-
-        ArrayList<int[]> shortestWay = new ArrayList<>();
-        ArrayList<Integer> previousIndexes = new ArrayList<>();
-        int currentIndex = 0;
-        for (int i = 0; i < coordinatePoint.size(); i++) {
-            double currentDiff = Integer.MAX_VALUE;
-            int indexOfCurrentClosestDestination = 0;
-            for (int j = 0; j < coordinatePoint.size(); j++) {
-                double difference = calculateDifference(coordinatePoint.get(currentIndex), coordinatePoint.get(j));
-                if (!isInPreviousIndexes(previousIndexes, j) && difference < currentDiff &&  j != currentIndex) {
-                    currentDiff = difference;
-                    indexOfCurrentClosestDestination = j;
-                }
-            }
-            previousIndexes.add(indexOfCurrentClosestDestination);
-            currentIndex = indexOfCurrentClosestDestination;
-            shortestWay.add(coordinatePoint.get(indexOfCurrentClosestDestination));
-        }
-
-
-        for(int[] point : shortestWay){
-            for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
-                if(Arrays.equals(entry.getValue(),point)){
-                    System.out.println(entry.getKey() + Arrays.toString(entry.getValue()));
-                }
-            }
-        }
-
-        return shortestWay;
-    }
-
-    private static boolean isInPreviousIndexes( ArrayList<Integer> previousIndexes, int key){
-        for (int i : previousIndexes){
-            if(i == key){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static double calculateDifference(int[] pointA, int[] pointB) {
+    private double calculateDifference(int[] pointA, int[] pointB) {
         return Math.sqrt(Math.pow((pointA[0] - pointB[0]), 2.0) + Math.pow((pointA[1] - pointB[1]), 2.0));
     }
+
+    public void compareAllPath(TreeMap<String, int[]> cityMap) {
+        int[][] coordinatePoint = new int[cityMap.size()][2];
+
+        TreeMap<Double, ArrayList<int[]>> allCombination = new TreeMap<>();
+
+        for(int i = 0; i < cityMap.size(); i++){
+            coordinatePoint[i] = (int[]) cityMap.values().toArray()[i]; ;
+        }
+        printCombination(coordinatePoint,coordinatePoint.length,coordinatePoint.length);
+    }
+
+    public void combinationUtil(int[][] arr, int[][] data, int start, int end, int index, int combiLength) {
+
+        if (index == combiLength) {
+            for (int j = 0; j < combiLength; j++)
+                System.out.print(Arrays.toString(data[j]) + " ");
+            System.out.println("");
+            return;
+        }
+
+        for (int i = start; i <= end && end - i + 1 >= combiLength - index; i++) {
+            data[index] = arr[i];
+            combinationUtil(arr, data, i + 1, end, index + 1, combiLength);
+        }
+    }
+
+    public void printCombination(int[][] arr, int arrLength, int combiLength) {
+        int[][] data = new int[combiLength][2];
+        combinationUtil(arr, data, 0, arrLength - 1, 0, combiLength);
+    }
+
 }
+
+
