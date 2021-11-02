@@ -5,7 +5,7 @@ import java.util.TreeMap;
 
 public class PathFinder {
 
-    public ArrayList<int[]> findShortestPath(TreeMap<String, int[]> cityMap) {
+    public ArrayList<int[]> findShortestPath(TreeMap<String, int[]> cityMap, int startingIndex) {
         ArrayList<int[]> coordinatePoint = new ArrayList<>();
 
         for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
@@ -13,8 +13,7 @@ public class PathFinder {
         }
         ArrayList<int[]> shortestWay = new ArrayList<>();
         ArrayList<Integer> previousIndexes = new ArrayList<>();
-        int currentIndex = 0;
-        previousIndexes.add(currentIndex);
+        int currentIndex = startingIndex;
         shortestWay.add(coordinatePoint.get(currentIndex));
         for (int i = 0; i < coordinatePoint.size(); i++) {
             double currentDiff = Integer.MAX_VALUE;
@@ -26,10 +25,16 @@ public class PathFinder {
                     indexOfCurrentClosestDestination = j;
                 }
             }
-            previousIndexes.add(indexOfCurrentClosestDestination);
+            if(!previousIndexes.contains(indexOfCurrentClosestDestination)){
+                previousIndexes.add(indexOfCurrentClosestDestination);
+            }
             currentIndex = indexOfCurrentClosestDestination;
-            shortestWay.add(coordinatePoint.get(indexOfCurrentClosestDestination));
+            if(!shortestWay.contains(coordinatePoint.get(indexOfCurrentClosestDestination))){
+                shortestWay.add(coordinatePoint.get(indexOfCurrentClosestDestination));
+            }
+
         }
+        shortestWay.add(coordinatePoint.get(startingIndex));
         for(int[] point : shortestWay){
             for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
                 if(Arrays.equals(entry.getValue(),point)){
@@ -40,7 +45,7 @@ public class PathFinder {
         return shortestWay;
     }
 
-    private static boolean isInPreviousIndexes( ArrayList<Integer> previousIndexes, int key){
+    private boolean isInPreviousIndexes( ArrayList<Integer> previousIndexes, int key){
         for (int i : previousIndexes){
             if(i == key){
                 return true;
@@ -49,7 +54,7 @@ public class PathFinder {
         return false;
     }
 
-    private static double calculateDifference(int[] pointA, int[] pointB) {
+    public double calculateDifference(int[] pointA, int[] pointB) {
         return Math.sqrt(Math.pow((pointA[0] - pointB[0]), 2.0) + Math.pow((pointA[1] - pointB[1]), 2.0));
     }
 }

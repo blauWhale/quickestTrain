@@ -10,11 +10,37 @@ import java.util.*;
 public class Main {
     static TreeMap<String, int[]> cityMap = new TreeMap<>();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         readJsonFile();
         PathFinder pathFinder = new PathFinder();
-        ArrayList<int[]> shortestWay = pathFinder.findShortestPath(cityMap);
+        Scanner scanner = new Scanner(System.in);
+        readJsonFile();
+        System.out.println("Grüezi, bitte alle einsteigen. Es geht nach: \n");
+        ArrayList<String> cityNames = new ArrayList<>();
+        for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
+            cityNames.add(entry.getKey());
+        }
 
+        System.out.println("Choose your startpoint:");
+        for (int station = 0; station < cityNames.size(); station++) {
+            System.out.println("[" + (station) + "] " + cityNames.get(station));
+        }
+
+        String cityname = null;
+        String input = null;
+        try {
+            input = scanner.nextLine();
+            for (int i = 0; i < cityNames.size(); i++) {
+                cityname = cityNames.get(Integer.parseInt(input));
+            }
+
+            System.out.println("You chose " + cityname);
+        } catch (IndexOutOfBoundsException e) {
+            throw new RuntimeException("Choose one of the teams listed (0-4)");
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Please type a number");
+        }
+        pathFinder.findShortestPath(cityMap, Integer.parseInt(input));
     }
 
     private static void readJsonFile() {
