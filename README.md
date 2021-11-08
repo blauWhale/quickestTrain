@@ -2,7 +2,7 @@
 this is a train application
 ## Analyse
 Unsere Aufgabenstellung ist wie folgt:<br><br>
-_Aus einem File werden die Koordinaten eines Startpunkts sowie von einer Serie von zu besuchenden Orten eingelesen. Die Applikation soll dann den kürzesten Weg finden, der vom Startpunkt zu allen Orten und wieder zurück zum Startpunkt führt. Als Distanz jedes Streckenteils wird die Luftlinie zwischen zwei Orten verwendet.<br><br>Die beste Reiseroute sollte auf der Konsole und in einem Textfile ausgegeben werden (Liste in der Reihenfolge der besuchten Orte mit Distanz).<br><br>Verwenden Sie am Anfang nicht zu viele Orte (vielleicht 5), und erhöhen Sie später. Schätzen Sie zusätzlich zur Codierung das Laufzeitverhalten ihrer Lösung (Protokoll!)_
+_Aus einem File werden die Koordinaten eines Startpunkts sowie von einer Serie von zu besuchenden Orten eingelesen. Die Applikation soll dann den kürzesten Weg finden, der vom Startpunkt zu allen Orten und wieder zurück zum Startpunkt führt. Als Distanz jedes Streckenteils wird die Luftlinie zwischen zwei Orten verwendet.<br><br>Die beste Reiseroute sollte auf der Konsole und in einem Textfile ausgegeben werden (Liste in der Reihenfolge der besuchten Orte mit Distanz).<br><br>
 <br>
 <br>
 ## Design
