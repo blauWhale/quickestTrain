@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         TreeMap<String, int[]> cityMap = new TreeMap<>();
         readJsonFile(cityMap);
         PathFinder pathFinder = new PathFinder();
@@ -19,6 +19,7 @@ public class Main {
         int startingPoint = userInterfaceDisplayer.askForStartingPoint(cityMap);
         ArrayList<int[]> shortestWay = pathFinder.findShortestPath(cityMap, startingPoint);
         userInterfaceDisplayer.printResults(shortestWay, cityMap);
+        saveToFile(shortestWay);
         scanner.close();
     }
 
@@ -39,5 +40,20 @@ public class Main {
         String xCord = (String) destinationObject.get("x");
         String yCord = (String) destinationObject.get("y");
         cityMap.put(name, new int[]{Integer.parseInt(xCord), Integer.parseInt(yCord)});
+    }
+
+    private static void saveToFile(ArrayList<int[]> shortestWay) throws IOException {
+        String filename = "shortestWay.txt";
+        FileWriter writer = new FileWriter(filename);
+        try {
+            new File(filename);
+            for (int[] coords : shortestWay) {
+                writer.write(Arrays.toString(coords)+System.lineSeparator());
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        writer.close();
     }
 }
