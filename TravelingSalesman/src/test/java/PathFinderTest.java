@@ -1,7 +1,6 @@
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 
 import java.util.TreeMap;
 
@@ -9,7 +8,6 @@ public class PathFinderTest {
 
     private static TreeMap<String, int[]> cityMap;
     private static PathFinder pf;
-
 
     @Before
     public void init(){

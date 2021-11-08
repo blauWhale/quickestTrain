@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -35,13 +34,7 @@ public class PathFinder {
 
         }
         shortestWay.add(coordinatePoint.get(startingIndex));
-        for(int[] point : shortestWay){
-            for (Map.Entry<String, int[]> entry : cityMap.entrySet()) {
-                if(Arrays.equals(entry.getValue(),point)){
-                    System.out.println(entry.getKey() + Arrays.toString(entry.getValue()));
-                }
-            }
-        }
+
         return shortestWay;
     }
 
