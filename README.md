@@ -12,4 +12,12 @@ Aus dieser Analyze heraus entstanden grobe Klassendiagramme und ein Use Case Dia
 ![Use Case Diagram](UML/use%20case.drawio.png)
 <br>
 Mit den Anforderungen wird eine simple Konsolen Applikation reichen. Sobald ein Startpunkt gewählt ist, passiert der Rest im Hintergrund.<br>
-
+<br>
+## Fertiges Produkt
+Hier unser Sequenzdiagramm:
+<br>
+![Sequenzdiagramm](UML/sequenceDiagram.png)
+<br>
+Das dazugehörige Klassendiagramm:
+<br>
+![Klassendiagramm](UML/ClassDiagram.png)
