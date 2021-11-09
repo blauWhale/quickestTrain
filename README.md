@@ -16,5 +16,8 @@ Mit den Anforderungen wird eine simple Konsolen Applikation reichen. Sobald ein 
 ## Fertiges Produkt
 Hier unser Sequenzdiagramm:
 <br>
-![Use Case Diagram](UML/sequenceDiagram.png)
-
+![Sequenzdiagramm](UML/sequenceDiagram.png)
+<br>
+Das dazugehörige Klassendiagramm:
+<br>
+![Klassendiagramm](UML/ClassDiagram.png)
