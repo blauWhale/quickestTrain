@@ -41,7 +41,6 @@ public class PathFinder {
             if(!shortestWay.contains(coordinatePoint.get(indexOfCurrentClosestDestination))){
                 shortestWay.add(coordinatePoint.get(indexOfCurrentClosestDestination));
             }
-
         }
         shortestWay.add(coordinatePoint.get(startingIndex));
 
