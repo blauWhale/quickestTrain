@@ -1,8 +1,15 @@
+/**
+ * Author: Raphael Blaauw, Oliver Achermann
+ * Version: 1.0
+ * Datum: 09.11.2021
+ * Title: Traveling Salesman
+ */
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class PathFinder {
+
 
     public ArrayList<int[]> findShortestPath(TreeMap<String, int[]> cityMap, int startingIndex) {
         ArrayList<int[]> coordinatePoint = new ArrayList<>();
@@ -14,6 +21,7 @@ public class PathFinder {
         ArrayList<Integer> previousIndexes = new ArrayList<>();
         int currentIndex = startingIndex;
         shortestWay.add(coordinatePoint.get(currentIndex));
+        // look for closest destination from current point
         for (int i = 0; i < coordinatePoint.size(); i++) {
             double currentDiff = Integer.MAX_VALUE;
             int indexOfCurrentClosestDestination = 0;
@@ -24,9 +32,11 @@ public class PathFinder {
                     indexOfCurrentClosestDestination = j;
                 }
             }
+            // mark every visited coordinate
             if(!previousIndexes.contains(indexOfCurrentClosestDestination)){
                 previousIndexes.add(indexOfCurrentClosestDestination);
             }
+            // mark the closest destination as starting point for next travel
             currentIndex = indexOfCurrentClosestDestination;
             if(!shortestWay.contains(coordinatePoint.get(indexOfCurrentClosestDestination))){
                 shortestWay.add(coordinatePoint.get(indexOfCurrentClosestDestination));

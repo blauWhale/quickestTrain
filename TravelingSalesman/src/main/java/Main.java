@@ -1,10 +1,15 @@
 
+/**
+ * Author: Raphael Blaauw, Oliver Achermann
+ * Version: 1.0
+ * Datum: 09.11.2021
+ * Title: Traveling Salesman
+ */
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import java.io.*;
 import java.util.*;
 

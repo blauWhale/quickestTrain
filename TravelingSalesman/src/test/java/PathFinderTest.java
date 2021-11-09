@@ -1,3 +1,10 @@
+/**
+ * Author: Raphael Blaauw, Oliver Achermann
+ * Version: 1.0
+ * Datum: 09.11.2021
+ * Title: Traveling Salesman
+ */
+
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
