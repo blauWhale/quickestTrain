@@ -1,3 +1,9 @@
+/**
+ * Author: Raphael Blaauw, Oliver Achermann
+ * Version: 1.0
+ * Datum: 09.11.2021
+ * Title: Traveling Salesman
+ */
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
